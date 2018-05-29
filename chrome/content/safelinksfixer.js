@@ -7,21 +7,14 @@ if (typeof SafelinksFixer == "undefined") {
 		var result;
 		var reg = /https:\/\/emea.*url=(.*)&data=.*/g;
 		while ((result = reg.exec(text)) != null) {
-			console.log(result);
 			text = text.replace(result[0], decodeURIComponent(result[1]));
-			console.log(text)
 		}
 		return text;
 	}
 
 	SafelinksFixer.fixLink = function(link) {
-		var origLink = link;
-
 		link.firstChild.data = SafelinksFixer.replaceURL(link.firstChild.data);
 		link.href = SafelinksFixer.replaceURL(link.href);
-
-		origSpan.style.fontFamily = "inherit";
-		origSpan.style.fontSize = "inherit";
 	}
 
 	SafelinksFixer.onLoadMessagePane = function(event) {
@@ -66,6 +59,6 @@ if (typeof SafelinksFixer == "undefined") {
 	};
 
 	SafelinksFixer.initCompose = function() {
-		document.addEventListener("load", safelinksFixer.onLoadComposePane, true);
+		document.addEventListener("load", SafelinksFixer.onLoadComposePane, true);
 	};
 }
