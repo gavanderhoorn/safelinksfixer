@@ -22,10 +22,6 @@ Clone the repository locally then run `make`
 Install the resulting xpi file in Thunderbird 3+ from the Add-ons menu
 option.
 
-This add-on is also available from the Mozilla Add-ons site.
-
-https://addons.mozilla.org/en-US/thunderbird/addon/smiley-fixer/
-
 License
 -------
 
