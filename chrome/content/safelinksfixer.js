@@ -3,10 +3,6 @@
 if (typeof SafelinksFixer == "undefined") {
 	var SafelinksFixer = {};
 
-	SafelinksFixer.prefs = (Components.classes["@mozilla.org/preferences-service;1"].
-		getService(Components.interfaces.nsIPrefService).
-		getBranch("extensions.safelinksfixer."));
-
 	SafelinksFixer.replaceURL = function(text) {
 		var result;
 		var reg = /https:\/\/emea.*url=(.*)&data=.*/g;
@@ -26,8 +22,6 @@ if (typeof SafelinksFixer == "undefined") {
 
 		origSpan.style.fontFamily = "inherit";
 		origSpan.style.fontSize = "inherit";
-		if (SafelinksFixer.prefs.getBoolPref("debug"))
-			origSpan.style.backgroundColor = "#ff0000";
 	}
 
 	SafelinksFixer.onLoadMessagePane = function(event) {
@@ -35,8 +29,6 @@ if (typeof SafelinksFixer == "undefined") {
 		if (!gMessageDisplay)
 			return;
 		if (!gMessageDisplay.displayedMessage)
-			return;
-		if (!SafelinksFixer.prefs.getBoolPref("enabled"))
 			return;
 		document.removeEventListener("load", SafelinksFixer.onLoadMessagePane, true);
 		var mp = document.getElementById('messagepane');
@@ -64,8 +56,6 @@ if (typeof SafelinksFixer == "undefined") {
 	SafelinksFixer.onLoadComposePane = function(event) {
 		var type = GetCurrentEditorType();
 		if (type != "htmlmail")
-			return;
-		if (!SafelinksFixer.prefs.getBoolPref("enabled"))
 			return;
 
 		var currentEditor = GetCurrentEditor();
