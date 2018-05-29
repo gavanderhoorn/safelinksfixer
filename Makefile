@@ -3,7 +3,6 @@ VERSION := $(patsubst $(filt),%,$(filter $(filt), $(shell cat install.rdf)))
 
 dist_EXTRA :=   ./install.rdf \
 		./chrome.manifest \
-		./defaults/preferences/prefs.js \
 		./chrome/content/safelinksfixer.png \
 		./chrome/content/messenger-overlay.xul \
 		./chrome/content/messenger-overlay.js \
