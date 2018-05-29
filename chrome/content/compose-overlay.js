@@ -1,2 +1,2 @@
 
-window.addEventListener("load", function() { SmileyFixer.initCompose(); }, false);
+window.addEventListener("load", function() { SafelinksFixer.initCompose(); }, false);

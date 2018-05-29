@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
   <Description about="urn:mozilla:install-manifest">
-    <em:id>smiley-fixer@richard.quirk</em:id>
+    <em:id>safelinks-fixer@gertjanvandenburg.com</em:id>
     <em:type>2</em:type>
-    <em:name>Smiley Fixer</em:name>
-    <em:version>1.4.3</em:version>
-    <em:creator>Richard Quirk</em:creator>
+    <em:name>Safelinks Fixer</em:name>
+    <em:version>1.0.5</em:version>
+    <em:creator>Gertjan van den Burg</em:creator>
     <em:contributor></em:contributor>
-    <em:description>Fixes Wingding Smileys in Outlook-generated emails</em:description>
-    <em:homepageURL>http://github.com/richq/smileyfixer</em:homepageURL>
-    <em:iconURL>chrome://smileyfixer/content/smileyfixer.png</em:iconURL>
-    <em:optionsURL>chrome://smileyfixer/content/options.xul</em:optionsURL>
+    <em:description>Replaces Outlook Safelinks URLs with a direct link</em:description>
+    <em:homepageURL>http://github.com/GjjvdBurg/safelinksfixer</em:homepageURL>
+    <em:iconURL>chrome://safelinksfixer/content/safelinksfixer.png</em:iconURL>
+    <em:optionsURL>chrome://safelinksfixer/content/options.xul</em:optionsURL>
     <em:targetApplication>
       <Description>
         <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
