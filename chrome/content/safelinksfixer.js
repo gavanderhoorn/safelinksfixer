@@ -5,9 +5,19 @@ if (typeof SafelinksFixer == "undefined") {
 
 	SafelinksFixer.replaceURL = function(text) {
 		var result;
-		var reg = /https:\/\/emea.*url=(.*)&data=.*/g;
-		while ((result = reg.exec(text)) != null) {
-			text = text.replace(result[0], decodeURIComponent(result[1]));
+		var regexes = new Array(
+			new RegExp("https:\/\/emea.*url=(.*)&data=.*reserved=0", "g"),
+			new RegExp("https:\/\/emea.*url=(.*)&amp;data=.*reserved=0", "g"),
+			new RegExp("https:\/\/eur01\.safelinks\.protection.*url=(.*)&data=.*reserved=0", "g"),
+			new RegExp("https:\/\/eur01\.safelinks\.protection.*url=(.*)&amp;data=.*reserved=0", "g")
+		);
+		var i;
+		for (i=0; i<regexes.length; i++) {
+			reg = regexes[i];
+			while ((result = reg.exec(text)) != null) {
+				//console.log("Replacing ", result[0], " with ", decodeURIComponent(result[1]));
+				text = text.replace(result[0], decodeURIComponent(result[1]));
+			}
 		}
 		return text;
 	}
@@ -41,6 +51,19 @@ if (typeof SafelinksFixer == "undefined") {
 		}
 	};
 
+	SafelinksFixer.doComposeFixups = function(currentEditorDom) {
+		(function iterate_node(node) {
+			if (node.nodeType == 3) {
+				var text = SafelinksFixer.replaceURL(node.data);
+				node.data = text;
+			} else if (node.nodeType == 1) {
+				for (var i=0; i<node.childNodes.length; i++) {
+					iterate_node(node.childNodes[i]);
+				}
+			}
+		})(currentEditorDom);
+	}
+
 	SafelinksFixer.init = function() {
 		document.addEventListener("load", SafelinksFixer.onLoadMessagePane, true);
 	};
@@ -48,14 +71,17 @@ if (typeof SafelinksFixer == "undefined") {
 	/* for the compose window */
 	SafelinksFixer.onLoadComposePane = function(event) {
 		var type = GetCurrentEditorType();
-		if (type != "htmlmail")
+		if (type != "htmlmail") {
 			return;
+		}
 
 		var currentEditor = GetCurrentEditor();
 		if (currentEditor === null)
 			return;
+
 		var currentEditorDom = currentEditor.rootElement;
 		SafelinksFixer.doFixups(currentEditorDom);
+		SafelinksFixer.doComposeFixups(currentEditorDom);
 	};
 
 	SafelinksFixer.initCompose = function() {

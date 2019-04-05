@@ -4,7 +4,7 @@
     <em:id>safelinks-fixer@gertjanvandenburg.com</em:id>
     <em:type>2</em:type>
     <em:name>Safelinks Fixer</em:name>
-    <em:version>1.0.9</em:version>
+    <em:version>1.0.14</em:version>
     <em:creator>Gertjan van den Burg</em:creator>
     <em:contributor></em:contributor>
     <em:description>Replaces Outlook Safelinks URLs with a direct link</em:description>
@@ -14,7 +14,7 @@
       <Description>
         <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id> <!-- Thunderbird -->
         <em:minVersion>3.0.1</em:minVersion>
-        <em:maxVersion>38.*</em:maxVersion>
+        <em:maxVersion>70.*</em:maxVersion>
       </Description>
     </em:targetApplication>
     <em:targetApplication>
