@@ -6,17 +6,20 @@ if (typeof SafelinksFixer == "undefined") {
 	SafelinksFixer.replaceURL = function(text) {
 		var result;
 		var regexes = new Array(
+			new RegExp('https:\/\/urldefense\.proofpoint\.com\/v2\/url\\?u=(\\S+)&d.*', "g"),
 			new RegExp("https:\/\/.*\.safelinks\.protection.*url=(.*)&data=.*reserved=0", "g"),
 			new RegExp("https:\/\/.*\.safelinks\.protection.*url=(.*)&amp;data=.*reserved=0", "g"),
 			new RegExp("https:\/\/.*\.safelinks\.protection.*url=(.*)&sdata=.*reserved=0", "g"),
 			new RegExp("https:\/\/.*\.safelinks\.protection.*url=(.*)&amp;sdata=.*reserved=0", "g")
 		);
 		var i;
+		var res;
 		for (i=0; i<regexes.length; i++) {
 			reg = regexes[i];
 			while ((result = reg.exec(text)) != null) {
-				//console.log("Replacing ", result[0], " with ", decodeURIComponent(result[1]));
-				text = text.replace(result[0], decodeURIComponent(result[1]));
+				res = result[1].replace(/-/g, '%').replace(/_/g, '/');
+				//console.log("Replacing ", result[0], " with ", decodeURIComponent(res));
+				return text.replace(result[0], decodeURIComponent(res));
 			}
 		}
 		return text;
