@@ -9,7 +9,7 @@
 	"name": "Safelinks Fixer",
 	"description": "Replaces Outlook Safelink URLs with a direct link",
 	"homepage_url": "https://github.com/GjjvdBurg/safelinksfixer",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"developer": {
 		"name": "Gertjan van den Burg",
 		"url": "https://gertjan.dev"
